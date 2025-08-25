@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <meta charset="UTF-8">  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+  <title>Wonderful Bites Menu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+  <style>
+    .scroll-section {
+      overflow-x: auto;
+      padding-bottom: 10px;
+    }
+    .scroll-grid {
+      display: grid;
+      grid-auto-flow: column;
+      grid-template-rows: 1fr;
+      gap: 32px;
+      min-width: 700px;
+    }
+    .scroll-item {
+      background: #fffaf5;
+      border-radius: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      padding: 24px;
+      text-align: center;
+      min-width: 220px;
+      max-width: 250px;
+      transition: transform 0.2s;
+      margin: 0 8px;
+    }
+    .scroll-item img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    }
+    .scroll-item-title {
+      font-size: 1.1em;
+      font-family: 'Playfair Display', serif;
+      color: #d35400;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+    .scroll-item-desc {
+      font-size: 0.95em;
+      color: #333;
+      margin-bottom: 8px;
+    }
+    .scroll-item-price {
+      font-size: 1em;
+      color: #8e44ad;
+      font-weight: bold;
+      background: #f3e8ff;
+      padding: 4px 12px;
+      border-radius: 8px;
+      display: inline-block;
+    }
+    .footer {
+      background: #d35400;
+      color: #fff;
+      text-align: center;
+      padding: 28px 0 18px 0;
+      border-radius: 30px 30px 0 0;
+      margin-top: 60px;
+      font-size: 1.1em;
+      position: relative;
+    }
+    .footer .footer-social {
+      margin-top: 12px;
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+    }
+    .footer .footer-social a {
+      display: inline-block;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #fffaf5;
+      color: #d35400;
+      font-size: 1.5em;
+      line-height: 32px;
+      text-align: center;
+      transition: background 0.3s, color 0.3s, transform 0.2s;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+    .footer .footer-social a:hover {
+      background: #e67e22;
+      color: #fff;
+      transform: scale(1.1);
+    }
+    .contact-section {
+      background: #fff0f6;
+      border-radius: 20px;
+      margin: 60px 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      padding: 40px 20px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .form-label {
+      font-weight: bold;
+      color: #d35400;
+      margin-bottom: 6px;
+    }
+    .form-input, .form-textarea {
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1em;
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff;
+      resize: vertical;
+    }
+    .form-input:focus, .form-textarea:focus {
+      outline: none;
+      border-color: #d35400;
+    }
+    .form-submit {
+      background: #d35400;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 14px;
+      font-size: 1.1em;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+      margin-top: 10px;
+    }
+    .form-submit:hover {
+      background: #e67e22;
+      color: #fff0f6;
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      margin: 60px 0;
+      padding: 0 20px;
+    }
+    .about-image {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 18px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+      object-fit: cover;
+      display: block;
+      margin: 0 auto;
+    }
+    .about-text {
+      font-size: 1.15em;
+      color: #333;
+      background: #fffaf5;
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    @media (max-width: 900px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+      .about-image {
+        max-width: 100%;
+        margin-bottom: 24px;
+      }
+    }
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 32px;
+      margin: 40px 0;
+      padding: 0 20px;
+    }
+    .menu-item {
+      background: #fffaf5;
+      border-radius: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      padding: 24px;
+      text-align: center;
+      transition: transform 0.2s;
+    }
+    .menu-item:hover {
+      transform: translateY(-6px) scale(1.03);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+    }
+    .menu-item img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    }
+    .menu-item-title {
+      font-size: 1.3em;
+      font-family: 'Playfair Display', serif;
+      color: #d35400;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+    .menu-item-desc {
+      font-size: 1em;
+      color: #333;
+      margin-bottom: 12px;
+    }
+    .menu-item-price {
+      font-size: 1.1em;
+      color: #8e44ad;
+      font-weight: bold;
+      background: #f3e8ff;
+      padding: 6px 18px;
+      border-radius: 8px;
+      display: inline-block;
+    }
+    .hero {
+      background-image: url('media/jollof rice.jpg'); /* Replace with your preferred dish image */
+      background-size: cover;
+      background-position: center;
+      height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      color: white;
+      text-align: center;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.4); /* Dark overlay for readability */
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero h1 {
+      font-size: 3em;
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+    }
+
+    .hero-button {
+      padding: 14px 28px;
+      background-color: #d35400;
+      color: white;
+      font-size: 1.2em;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .hero-button:hover {
+      background-color: #e67e22;
+      transform: scale(1.05);
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fffaf5;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3em;
+      text-align: center;
+      color: #8e44ad;
+      margin-top: 1em;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    }
+    h2 {
+      font-family: 'Georgia', serif;
+      font-size: 2em;
+      color: #d35400;
+      border-bottom: 2px solid #d35400;
+      padding-bottom: 0.3em;
+      margin-top: 2em;
+      margin-bottom: 1em;
+      text-align: center;
+    }
+    h3 {
+      font-size: 1.3em;
+      color: #2c3e50;
+      margin-bottom: 0.2em;
+    }
+    .section {
+      max-width: 800px;
+      margin: auto;
+      padding: 1em;
+    }
+    .dish {
+      margin-bottom: 1.5em;
+    }
+    img {
+      width: 50%;
+      max-width: 100px;
+      display: block;
+      margin: 1em auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .menu-link {
+      display: inline-block;
+      padding: 12px 24px;
+      background-color: #d35400; /* Warm, appetizing color */
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-family: 'Segoe UI', sans-serif;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    .menu-link:hover {
+      background-color: #e67e22;
+      transform: scale(1.05);
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #d35400;
+      padding: 16px 32px;
+      color: #fff;
+      font-family: 'Playfair Display', serif;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .navbar-brand {
+      font-size: 2em;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    .navbar-links {
+      list-style: none;
+      display: flex;
+      gap: 24px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar-links li {
+      display: inline;
+    }
+
+    .navbar-links a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.1em;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 6px;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .navbar-links a:hover {
+      background: #fffaf5;
+      color: #d35400;
+    }
+
+    /* Accessibility focus style for navbar links */
+    .navbar-links a:focus {
+      background: #fffaf5;
+      color: #d35400;
+      box-shadow: 0 0 0 3px #d3540044;
+      outline: none;
+    }
+  </style>
+  <nav class="navbar">
+    <div class="navbar-brand">Wonderful Bites</div>
+    <ul class="navbar-links">
+      <li><a href="index.html" aria-label="Home page">Home</a></li>
+      <li><a href="#menu" aria-label="Go to menu section">Menu</a></li>
+      <li><a href="about.html" aria-label="About Wonderful Bites">About Us</a></li>
+      <li><a href="contact.html" aria-label="Contact Wonderful Bites">Contact</a></li>
+    </ul>
+  </nav>
+  <header>
+  <section class="about-grid">
+    <img src="media/fruit cake.jpg" alt="Delicious Fruit Cake at Wonderful Bites" class="about-image">
+    <div class="about-text">
+      <h2>About Wonderful Bites</h2>
+      <p>Wonderful Bites is a celebration of authentic Nigerian cuisine, blending tradition and creativity in every dish. Our chefs use the freshest ingredients to craft meals that delight the senses, from classic Jollof Rice to innovative desserts. Whether you're dining in or ordering to-go, we promise a warm atmosphere and unforgettable flavors.</p>
+    </div>
+  </section>
+    <h1>Wonderful Bites Menu</h1>
+    <p>Explore our delicious offerings crafted with love and the freshest ingredients</p>
+  </header>
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Discover the Taste of Nigeria</h1>
+        <a href="#menu" class="hero-button">Explore Our Menu</a>
+      </div>
+    </section>
+    <section id="menu">
+    <h2>Menu Highlights</h2>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <img src="media/jollof rice.jpg" alt="Jollof Rice">
+        <div class="menu-item-title">Jollof Rice</div>
+        <div class="menu-item-desc">A vibrant one-pot dish made with rice, tomatoes, peppers, onions, and spices. Served with fried plantains and grilled turkey.</div>
+        <div class="menu-item-price">₦2,500</div>
+      </div>
+      <div class="menu-item">
+        <img src="media/meat pie.jpg" alt="Meat Pie">
+        <div class="menu-item-title">Meat Pie</div>
+        <div class="menu-item-desc">Pastry filled with minced meat, carrots, and potatoes. Perfect for a savory snack or appetizer.</div>
+        <div class="menu-item-price">₦800</div>
+      </div>
+      <div class="menu-item">
+        <img src="media/banana milkshake.jpg" alt="Banana Milkshake">
+        <div class="menu-item-title">Banana Milkshake</div>
+        <div class="menu-item-desc">A creamy blend of ripe bananas, milk, and a hint of vanilla. Refreshing and sweet!</div>
+        <div class="menu-item-price">₦1,200</div>
+      </div>
+    </div>
+      <h2>Appetizers</h2>
+      <div class="menu-grid">
+        <div class="menu-item">
+          <img src="media/small chops.jpg" alt="Small Chops">
+          <div class="menu-item-title">Small Chops</div>
+          <div class="menu-item-desc">Puff, samosa, springroll, gizzard chops, chicken wings.</div>
+        </div>
+        <div class="menu-item">
+          <img src="media/meat pie.jpg" alt="Meat Pie">
+          <div class="menu-item-title">Meat Pie</div>
+          <div class="menu-item-desc">Pastry filled with minced meat, carrots, and potatoes.</div>
+        </div>
+        <div class="menu-item">
+          <img src="media/asun.jpg" alt="Asun">
+          <div class="menu-item-title">Asun</div>
+          <div class="menu-item-desc">Barbecued goat meat tossed in peppered sauce.</div>
+        </div>
+      </div>
+  <section>
+      </div>
+    </div>
+  </section>
+  <section>
+      </div>
+    </div>
+  </section>
+  </section>
+  <section>
+    <h2>Main Dish</h2>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <img src="media/jollof rice.jpg" alt="Jollof Rice">
+        <div class="menu-item-title">Jollof Rice</div>
+        <div class="menu-item-desc">A vibrant one-pot dish made with rice, tomatoes, peppers, onions, and spices. Often paired with fried plantains, grilled turkey, or beef.</div>
+        <div class="menu-item-price">₦2,500</div>
+      </div>
+      <div class="menu-item">
+        <img src="media/pounded yam and egusi.jpg" alt="Egusi Soup with Pounded Yam">
+        <div class="menu-item-title">Egusi Soup & Pounded Yam</div>
+        <div class="menu-item-desc">Thick soup made from ground melon seeds, leafy vegetables, and assorted meats or fish. Traditionally eaten with pounded yam or fufu.</div>
+        <div class="menu-item-price">₦3,000</div>
+      </div>
+      <div class="menu-item">
+        <img src="media/ofada rice.jpg" alt="Ofada Rice with Pepper Sauce">
+        <div class="menu-item-title">Ofada Rice & Pepper Sauce</div>
+        <div class="menu-item-desc">Locally grown rice served with a spicy green pepper sauce made with assorted meats. Often wrapped in leaves for an authentic touch.</div>
+        <div class="menu-item-price">₦2,800</div>
+      </div>
+      <div class="menu-item">
+        <img src="Wonderful Bites Menu_files/Ayamase stew and rice.jpg" alt="Ayamase (Ofada Stew)">
+        <div class="menu-item-title">Ayamase (Ofada Stew)</div>
+        <div class="menu-item-desc">Green pepper stew with assorted meats, served with white rice.</div>
+        <div class="menu-item-price">₦2,700</div>
+      </div>
+      <div class="menu-item">
+        <img src="Wonderful Bites Menu_files/Okra soup.jpg" alt="Seafood Okra">
+        <div class="menu-item-title">Seafood Okra</div>
+        <div class="menu-item-desc">Rich okra soup with prawns, fish, and crab.</div>
+        <div class="menu-item-price">₦2,600</div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <h2>Desserts</h2>
+      <div class="menu-grid">
+        <div class="menu-item">
+          <img src="media/fruit cake.jpg" alt="Fruit Cake served with a drizzle of icing or whip cream">
+          <div class="menu-item-title">Fruit Cake</div>
+          <div class="menu-item-desc">Served with a drizzle of icing or whip cream.</div>
+        </div>
+        <div class="menu-item">
+          <img src="media/red velvet cake.jpg" alt="Red Velvet Cake served with whip cream and sprinkles">
+          <div class="menu-item-title">Red Velvet Cake</div>
+          <div class="menu-item-desc">Served with whip cream and sprinkles.</div>
+        </div>
+        <div class="menu-item">
+          <img src="media/banana milkshake.jpg" alt="Banana Milkshake, a creamy blend of ripe bananas, milk, and a hint of vanilla">
+          <div class="menu-item-title">Banana Milkshake</div>
+          <div class="menu-item-desc">A creamy blend of ripe bananas, milk, and a hint of vanilla.</div>
+        </div>
+        <div class="menu-item">
+          <img src="Wonderful Bites Menu_files/Chin Chin.PNG" alt="Chin Chin, crunchy fried dough bites" width="100">
+          <div class="menu-item-title">Chin Chin</div>
+          <div class="menu-item-desc">Crunchy fried dough bites.</div>
+        </div>
+        <div class="menu-item">
+          <img src="Wonderful Bites Menu_files/Zobo drink .jpg" alt="Zobo Drink, refreshing hibiscus flower beverage" width="100">
+          <div class="menu-item-title">Zobo Drink</div>
+          <div class="menu-item-desc">Refreshing hibiscus flower beverage.</div>
+        </div>
+      </div>
+  </section>
+  <a href="contact.html" class="menu-link">Contact Us</a>
+  <section class="contact-section" id="contact">
+  <footer class="footer">
+    <div>&copy; 2025 Wonderful Bites. All rights reserved.</div>
+    <div class="footer-social">
+      <a href="https://facebook.com" target="_blank" title="Facebook" aria-label="Facebook">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="https://twitter.com" target="_blank" title="Twitter" aria-label="Twitter">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="https://instagram.com" target="_blank" title="Instagram" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+    </div>
+  </footer>
+    <h2>Contact Us</h2>
+    <form class="contact-form" action="#" method="post">
+      <label for="name" class="form-label">Name:</label>
+      <input type="text" id="name" name="name" class="form-input" required>
+
+      <label for="email" class="form-label">Email:</label>
+      <input type="email" id="email" name="email" class="form-input" required>
+
+      <label for="message" class="form-label">Message:</label>
+      <textarea id="message" name="message" rows="5" class="form-textarea" required></textarea>
+
+      <button type="submit" class="form-submit">Send Message</button>
+    </form>
+  </section>
+</body>
+</html>
