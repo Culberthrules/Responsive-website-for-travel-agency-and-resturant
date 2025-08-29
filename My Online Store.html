@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Store</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="Online store.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+      @media (max-width: 576px) {
+        header .container {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .nav {
+          flex-direction: column;
+          width: 100%;
+        }
+        .nav-link {
+          padding: 12px 0;
+          text-align: left;
+        }
+        .card-img-top {
+          height: 120px !important;
+        }
+        .card {
+          margin-bottom: 18px;
+        }
+        .row.g-4 {
+          gap: 1rem !important;
+        }
+      }
+      .nav-link:focus {
+        outline: 2px solid #0d6efd;
+        outline-offset: 2px;
+        background: #e9ecef;
+        color: #212529 !important;
+      }
+      .btn:focus {
+        outline: 2px solid #0d6efd;
+        outline-offset: 2px;
+      }
+      .card-img-top {
+        object-fit: cover;
+        width: 100%;
+        height: 200px;
+        border-radius: 8px 8px 0 0;
+      }
+      .card:hover {
+        box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        transform: translateY(-4px) scale(1.03);
+        transition: box-shadow 0.3s, transform 0.3s;
+      }
+      .btn-primary {
+        transition: background 0.3s, color 0.3s, transform 0.2s;
+      }
+      .btn-primary:hover {
+        background: #198754;
+        color: #fff;
+        transform: scale(1.05);
+      }
+    </style>
+</head>
+<body>
+    <header class="bg-dark text-white p-3">
+        <div class="container d-flex justify-content-between align-items-center">
+            <span class="store-logo">My Store</span>
+            <nav>
+                <ul class="nav">
+                    <li class="nav-item"><a class="nav-link text-white" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#products">Products</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div id="storeCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#storeCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#storeCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#storeCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="media/plane view.jpeg" class="d-block w-100" alt="Product One" style="height:220px;object-fit:cover;">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Featured Product One</h5>
+            <p>Discover our best-selling item!</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="media/fruit cake.jpg" class="d-block w-100" alt="Fruit Cake" style="height:220px;object-fit:cover;">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Delicious Fruit Cake</h5>
+            <p>Perfect for every occasion.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="media/Appliances background.jpg" class="d-block w-100" alt="Appliances" style="height:220px;object-fit:cover;">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Home Appliances</h5>
+            <p>Upgrade your home today.</p>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#storeCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#storeCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    <section id="products" class="py-5 bg-light">
+        <div class="container text-center">
+            <h2 class="mb-4">Our Products</h2>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100">
+                        <img src="media/product one.jpg" class="card-img-top" alt="Product 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Product one</h5>
+                            <p class="card-text">Brief description of product one</p>
+                            <p class="card-text">$19.99</p>
+                            <a href="#" class="btn btn-primary">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100">
+                        <img src="media/Product two.jpg" class="card-img-top" alt="Product 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Product two</h5>
+                            <p class="card-text">Brief description of product two</p>
+                            <p class="card-text">$29.99</p>
+                            <a href="#" class="btn btn-primary">Add to Cart</a>
+                        </div>  
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100">
+                        <img src="media/Product three.jpg" class="card-img-top" alt="Product 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Product three</h5>
+                            <p class="card-text">Brief description of product three</p>
+                            <p class="card-text">$39.99</p>
+                            <a href="#" class="btn btn-primary">Add to Cart</a>
+                        </div>
+                    </div>  
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100">
+                        <img src="media/product four.jpg" class="card-img-top" alt="Product 4">
+                        <div class="card-body">
+                            <h5 class="card-title">Product four</h5>
+                            <p class="card-text">Brief description of product four</p>
+                            <p class="card-text">$49.99</p>
+                            <a href="#" class="btn btn-primary">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="contact" class="py-5 bg-light">
+        <div class="container" style="max-width: 500px;">
+            <h2 class="mb-4 text-center">Contact Us</h2>
+            <form aria-label="Contact Form">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" required aria-required="true" placeholder="Your Name">
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" required aria-required="true" placeholder="Your Email">
+                </div>
+                <div class="mb-3">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea class="form-control" id="message" name="message" rows="4" required aria-required="true" placeholder="Your Message"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Send Message</button>
+            </form>
+            <div class="social-icons text-center mt-4">
+                <a href="https://facebook.com/yourprofile" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com/yourprofile" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://instagram.com/yourprofile" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://linkedin.com/in/yourprofile" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </section>
+    <footer class="bg-dark text-white text-center p-3">
+        <div class="container">
+            <p class="mb-0">&copy; 2024 My Store. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+
+
