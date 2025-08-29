@@ -1,0 +1,9 @@
+Here’s a brief description of the design choices made for your online store:
+
+Responsive Layout: Bootstrap’s grid system and custom media queries ensure the site looks great on all devices, from desktop to mobile.
+Modern Visuals: Cards, carousel, and gradient buttons provide a clean, attractive look. Rounded corners and subtle shadows add depth.
+Accessibility: Focus styles, clear navigation, and ARIA labels improve usability for all users.
+Branding: The header features a distinct store logo, and social icons are included for easy sharing.
+SEO: Meta tags for description and keywords help search engines index your site.
+User Engagement: Interactive elements like hover effects, carousel, and “Add to Cart” buttons encourage user interaction.
+These choices create a professional, user-friendly, and visually appealing shopping experience.
